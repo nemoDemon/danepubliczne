@@ -1,4 +1,10 @@
 const fetch = require("node-fetch");
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const PORT = process.env.PORT || 3000;
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://<user>:<123>@ds113098.mlab.com:13098/danepubliczne', {useMongoClient: true});
 
 var methods =
 {
@@ -63,6 +69,45 @@ var methods =
 			console.log("Date and time: " + dateAndTime);
 
 			return dateAndTime;
+		}
+		catch(error)
+		{
+			console.log(error);
+			return "Error: " + error;
+		}
+	},
+
+	saveData: async function(data)
+	{
+		try
+		{
+			let Citizen = mongoose.model('Citizen',{
+    
+				name: {
+					type: String,
+					required: true,
+				},
+				
+				present: {
+					type: Boolean,
+				},
+			
+				power: {
+					type: Number,
+				}
+			
+			});
+			
+			let newCitizen = new Citizen({
+				name: "elo",
+				present: true,
+				power: 100
+			});
+			
+			newCitizen.save().then((result) => {
+				console.log('Zapisano', JSON.stringify(result, undefined, 2));
+			}, (err) => {console.log('Error', err);}
+			);
 		}
 		catch(error)
 		{
