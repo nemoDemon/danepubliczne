@@ -1,2 +1,41 @@
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<p>{{text}}</p>
+
+<p>
+	<form action="/" method="post">
+		Request: <input type="text" name="town">
+		<input type="submit" value="Search">
+	</form>
+</p> 
+
+<p>
+	Address: <b>{{address}}</b> <br />
+	Latitude: <b>{{latitude}}</b> <br />
+	Longtitude: <b>{{longtitude}}</b> <br />
+	Elevation: <b>{{elevation}}</b> <br />
+	Date and time: <b>{{dateAndTime}}</b> <br />
+</p>
+
+    <div id="map"></div>
+    <script>
+	var vlat = {{latitude}};
+	var vlng = {{longtitude}};
+      function initMap() 
+	{
+	if(vlat >= 0 && vlat < 360 && vlng >= 0 && vlng < 360)
+	{
+		var uluru = {lat: vlat, lng: vlng};
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 4,
+		  center: uluru
+		});
+		var marker = new google.maps.Marker({
+		  position: uluru,
+		  map: map
+		});
+	}
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_R5Bj6peTehs6YEzuXCDPpqa-VndhKaI&callback=initMap">
+    </script>
