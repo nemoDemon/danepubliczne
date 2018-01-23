@@ -85,7 +85,7 @@ var methods =
     
 				name: {
 					type: String,
-					required: true
+					require: true
 				}
 			});
 			
