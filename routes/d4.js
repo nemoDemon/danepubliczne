@@ -81,7 +81,7 @@ var methods =
 	{
 		try
 		{
-			let Citizen = mongoose.model('Citizen',{
+			let Citizen = mongoose.model('locations',{
     
 				name: {
 					type: String,
@@ -98,7 +98,7 @@ var methods =
 			
 			});
 			
-			let newCitizen = new Citizen({
+			let newCitizen = new locations({
 				name: "elo",
 				present: true,
 				power: 100
