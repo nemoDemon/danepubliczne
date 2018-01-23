@@ -86,22 +86,11 @@ var methods =
 				name: {
 					type: String,
 					required: true,
-				},
-				
-				present: {
-					type: Boolean,
-				},
-			
-				power: {
-					type: Number,
 				}
-			
 			});
 			
 			let newCitizen = new locations({
 				name: "elo",
-				present: true,
-				power: 100
 			});
 			
 			newCitizen.save().then((result) => {
