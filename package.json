@@ -1,0 +1,22 @@
+{
+  "name": "danepubliczne",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nemoDemon/danepubliczne.git"
+  },
+  "author": "Ernest Czachorowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nemoDemon/danepubliczne/issues"
+  },
+  "homepage": "https://github.com/nemoDemon/danepubliczne#readme",
+  "dependencies": {
+    "node": "^9.4.0"
+  }
+}
