@@ -90,7 +90,7 @@ var methods =
 			});
 			
 			let newLocation = new locations({
-				name: "elo"
+				name: data
 			});
 			
 			newLocation.save().then((result) => {
@@ -98,7 +98,7 @@ var methods =
 			}, (err) => {console.log('Error', err);}
 			);
 
-			mongoose.Connection.close();
+			mongoose.disconnect();
 		}
 		catch(error)
 		{
