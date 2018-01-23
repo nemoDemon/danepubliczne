@@ -98,7 +98,7 @@ var methods =
 			}, (err) => {console.log('Error', err);}
 			);
 
-			//mongoose.disconnect();
+			mongoose.disconnect();
 		}
 		catch(error)
 		{
