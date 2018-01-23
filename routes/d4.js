@@ -81,19 +81,19 @@ var methods =
 			mongoose.Promise = global.Promise;
 			mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne', {useMongoClient: true});
 
-			let Citizen = mongoose.model('locations',{
+			let locations = mongoose.model('locations',{
     
 				name: {
 					type: String,
-					required: true,
+					required: true
 				}
 			});
 			
-			let newCitizen = new locations({
-				name: "elo",
+			let newLocation = new locations({
+				name: "elo"
 			});
 			
-			newCitizen.save().then((result) => {
+			newLocation.save().then((result) => {
 				console.log('Zapisano', JSON.stringify(result, undefined, 2));
 			}, (err) => {console.log('Error', err);}
 			);
