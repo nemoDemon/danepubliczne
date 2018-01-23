@@ -3,9 +3,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://<user>:<123>@ds113098.mlab.com:13098/danepubliczne', {useMongoClient: true});
-
 var methods =
 {
 	getLocation: async function(addressUrl)
@@ -81,6 +78,9 @@ var methods =
 	{
 		try
 		{
+			mongoose.Promise = global.Promise;
+			mongoose.connect('mongodb://<user>:<123>@ds113098.mlab.com:13098/danepubliczne', {useMongoClient: true});
+
 			let Citizen = mongoose.model('locations',{
     
 				name: {
@@ -108,6 +108,8 @@ var methods =
 				console.log('Zapisano', JSON.stringify(result, undefined, 2));
 			}, (err) => {console.log('Error', err);}
 			);
+
+			mongoose.Connection.close();
 		}
 		catch(error)
 		{
