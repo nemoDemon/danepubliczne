@@ -79,7 +79,7 @@ var methods =
 		try
 		{
 			mongoose.Promise = global.Promise;
-			mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne', {useMongoClient: true});
+			mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne');
 
 			let locations = mongoose.model('locations',{
     
@@ -90,7 +90,7 @@ var methods =
 			});
 			
 			let newLocation = new locations({
-				name: data
+				name: "name"
 			});
 			
 			newLocation.save().then((result) => {
