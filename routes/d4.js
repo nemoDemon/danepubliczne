@@ -74,7 +74,7 @@ var methods =
 		}
 	},
 
-	saveData: async function(data)
+	saveData: function(data)
 	{
 		try
 		{
