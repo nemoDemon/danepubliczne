@@ -80,6 +80,14 @@ var methods =
 			mongoose.Promise = global.Promise;
 			mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne');
 
+			var Schema = mongoose.Schema;
+			var locationsSchema = new Schema({
+				name: {
+					type: String,
+					require: true
+				}
+			});
+
 			let locations = mongoose.model('locations',{
     
 				name: {
@@ -87,7 +95,8 @@ var methods =
 					require: true
 				}
 			});
-			
+
+
 			let newLocation = new locations({
 				name: data
 			});
