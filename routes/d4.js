@@ -2,6 +2,15 @@ const fetch = require("node-fetch");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+var Schema = mongoose.Schema;
+
+var locationSchema = new Schema({
+	name: {
+		type: String,
+		require: true
+	}
+});
+
 var methods =
 {
 	getLocation: async function(addressUrl)
@@ -79,26 +88,12 @@ var methods =
 		{
 			mongoose.Promise = global.Promise;
 			mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne');
+			//mongoose.connect('mongodb://localhost:27017');
 
-			var Schema = mongoose.Schema;
-			var locationsSchema = new Schema({
-				name: {
-					type: String,
-					require: true
-				}
-			});
-
-			let locations = mongoose.model('locations',{
-    
-				name: {
-					type: String,
-					require: true
-				}
-			});
-
+			let locations = mongoose.model('locations', locationSchema);
 
 			let newLocation = new locations({
-				name: data
+				name: "tekst"
 			});
 			
 			newLocation.save().then((result) => {
