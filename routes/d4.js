@@ -90,7 +90,7 @@ var methods =
 			});
 			
 			let newLocation = new locations({
-				name: "name1"
+				name: "name2"
 			});
 			
 			newLocation.save().then((result) => {
