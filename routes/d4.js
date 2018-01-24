@@ -81,14 +81,14 @@ var methods =
 			mongoose.Promise = global.Promise;
 			mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne');
 
-			/*let locations = mongoose.model('locations',{
+			let locations = mongoose.model('locations',{
     
 				name: {
 					type: String,
 					require: true
 				}
 			});
-			*/
+			
 			let newLocation = new locations({
 				name: "name1"
 			});
