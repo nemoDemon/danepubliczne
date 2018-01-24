@@ -1,7 +1,6 @@
 const fetch = require("node-fetch");
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const PORT = process.env.PORT || 3000;
 
 var methods =
 {
@@ -90,7 +89,7 @@ var methods =
 			});
 			
 			let newLocation = new locations({
-				name: "name2"
+				name: data
 			});
 			
 			newLocation.save().then((result) => {
