@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 const bodyParser = require('body-parser');
-const locationModel = require('db.js');
+const locationModel = require('./routes/db.js');
 
 var methods =
 {
