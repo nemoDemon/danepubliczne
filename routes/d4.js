@@ -40,7 +40,8 @@ var methods =
 			console.log("Address: " + address);
 			console.log("Latitude: " + latitude);
 			console.log("Longtitude: " + longtitude);
-
+			var weather = "api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longtitude;
+			console.log(weather);
 			var returnStr = address + ";" + latitude + ";" + longtitude;
 			return returnStr;
 		}
@@ -101,12 +102,12 @@ var methods =
 		{
 			let newLocation = new locationModel();
 			
-			newLocation.name = inAddress;
+			newLocation.address = inAddress;
 			newLocation.latitude = inLatitude;
 			newLocation.longtitude = inLongtitude;
 			
 			newLocation.save().then((result) => {
-				console.log('Zapisano', JSON.stringify(result, undefined, 2));
+				console.log('Saved', JSON.stringify(result, undefined, 2));
 			}, (err) => {console.log('Error', err);}
 			);
 		}
