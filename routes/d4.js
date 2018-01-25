@@ -9,10 +9,17 @@ mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne');
 var Schema = mongoose.Schema;
 
 var locationSchema = new Schema({
-	name: {
+	address: {
 		type: String,
 		require: true
+	},
+	latitude: {
+		type: String
+	},
+	longtitude: {
+		type: String
 	}
+
 });
 
 const locationModel = mongoose.model('locations', locationSchema);
@@ -88,13 +95,15 @@ var methods =
 		}
 	},
 
-	saveData: async function(data)
+	saveData: async function(inAddress, inLatitude, inLongtitude)
 	{
 		try
 		{
 			let newLocation = new locationModel();
 			
-			newLocation.name = 'tekst';
+			newLocation.name = inAddress;
+			newLocation.latitude = inLatitude;
+			newLocation.longtitude = inLongtitude;
 			
 			newLocation.save().then((result) => {
 				console.log('Zapisano', JSON.stringify(result, undefined, 2));
