@@ -40,7 +40,7 @@ var methods =
 			console.log("Address: " + address);
 			console.log("Latitude: " + latitude);
 			console.log("Longtitude: " + longtitude);
-			var weather = "api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longtitude;
+			var weather = await fetch("api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longtitude);
 			console.log(weather);
 			var returnStr = address + ";" + latitude + ";" + longtitude;
 			return returnStr;
