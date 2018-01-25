@@ -40,7 +40,7 @@ router.post('/', async function(req, res) {
 		var title = "Lokalizator";
 		var text = "Found details are presented below..."
 
-		var save = await d4.modules.saveData(String(address), String(latitude), String(longtitude));
+		var save = await d4.modules.saveData(address.toString(), latitude.toString(), longtitude.toString());
 
 		res.render('index', { title: title, text: text, address: address, latitude: latitude, longtitude: longtitude, elevation: elevation, dateAndTime: dateAndTime });
 	}
