@@ -1,6 +1,21 @@
 const fetch = require("node-fetch");
 const bodyParser = require('body-parser');
-const locationModel = require('./routes/db.js');
+const mongoose = require('mongoose');
+
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne');
+
+var Schema = mongoose.Schema;
+
+var locationSchema = new Schema({
+	name: {
+		type: String,
+		require: true
+	}
+});
+
+const locationModel = mongoose.model('locations', locationSchema);
 
 var methods =
 {

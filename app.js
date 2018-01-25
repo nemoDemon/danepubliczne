@@ -4,17 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
-
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
