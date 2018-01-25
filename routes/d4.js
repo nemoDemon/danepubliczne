@@ -1,15 +1,6 @@
 const fetch = require("node-fetch");
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-
-var Schema = mongoose.Schema;
-
-var locationSchema = new Schema({
-	name: {
-		type: String,
-		require: true
-	}
-});
+const locationModel = require('db.js');
 
 var methods =
 {
@@ -86,22 +77,14 @@ var methods =
 	{
 		try
 		{
-			mongoose.Promise = global.Promise;
-			mongoose.connect('mongodb://user:123@ds113098.mlab.com:13098/danepubliczne');
-			//mongoose.connect('mongodb://localhost:27017');
-
-			let locations = mongoose.model('locations', locationSchema);
-
-			let newLocation = new locations({
-				name: "tekst"
-			});
+			let newLocation = new locationModel();
+			
+			newLocation.name = 'tekst';
 			
 			newLocation.save().then((result) => {
 				console.log('Zapisano', JSON.stringify(result, undefined, 2));
 			}, (err) => {console.log('Error', err);}
 			);
-
-			mongoose.disconnect();
 		}
 		catch(error)
 		{
