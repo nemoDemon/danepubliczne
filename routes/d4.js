@@ -41,13 +41,7 @@ var methods =
 			console.log("Latitude: " + latitude);
 			console.log("Longtitude: " + longtitude);
 
-			var weatherResponse = await fetch("http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longtitude+"&units=metric&APPID=ec8c7eeb498daedd31d95674436b2f82");
-			var weatherJson = await weatherResponse.json();
-			console.log(weatherJson);
-			var sky = weatherJson.weather[0].main;
-			var temperature = weatherJson.main.temp;
-			var pressure = weatherJson.main.pressure;
-			var returnStr = address + ";" + latitude + ";" + longtitude + ";" + sky + ";" + temperature + ";" + pressure;
+			var returnStr = address + ";" + latitude + ";" + longtitude;
 			return returnStr;
 		}
 		catch(error)
@@ -77,22 +71,21 @@ var methods =
 		}
 	},
 
-	getDateAndTime: async function(dateAndTimeUrl)
+	getWeather: async function(weatherUrl)
 	{
 		try
 		{
-			const response = await fetch(dateAndTimeUrl);
-			const json = await response.json();
-
-			var timestamp = new Date().getTime();
-			var dstOffset = json.dstOffset;
-			var rawOffset = json.rawOffset;
+			
+			var weatherResponse = await fetch(weatherUrl);
+			var weatherJson = await weatherResponse.json();
+			console.log(weatherJson);
+			var sky = weatherJson.weather[0].main;
+			var temperature = weatherJson.main.temp;
+			var pressure = weatherJson.main.pressure;
 	
-			var dateAndTime = new Date(timestamp + dstOffset + rawOffset);
-		
-			console.log("Date and time: " + dateAndTime);
+			console.log("Weather: " + sky + " temp: " + temperature + " pressure: " + pressure);
 
-			return dateAndTime;
+			return weather;
 		}
 		catch(error)
 		{

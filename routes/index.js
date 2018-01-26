@@ -29,23 +29,24 @@ router.post('/', async function(req, res) {
 		var address = adressArray[0];
 		var latitude = adressArray[1];
 		var longtitude = adressArray[2];
-		var sky = adressArray[3];
-		var temp = adressArray[4];
-		var pressure = adressArray[5];
+
+		var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longtitude+"&units=metric&APPID=ec8c7eeb498daedd31d95674436b2f82";
+		var weatherReturned = await d4.modules.getWeather(weatherUrl);
+		var weatherArray = weatherReturned.split(";");
+
+		var sky = weatherArray[0];
+		var temp = weatherArray[1];
+		var pressure = weatherArray[2];
 
 		var elevationUrl = "https://maps.googleapis.com/maps/api/elevation/json?locations="+latitude+","+longtitude+"&key=AIzaSyAOCM4z1CH2j0LldnBXPXh91fKlx8ZTMBk";
 		var elevation = await d4.modules.getElevation(elevationUrl);
-
-		var timezoneOffset = new Date().getTimezoneOffset();
-		var dateAndTimeUrl = "https://maps.googleapis.com/maps/api/timezone/json?location="+latitude+","+longtitude+"&timestamp="+timezoneOffset+"&key=AIzaSyAE2Fap3dFbhYgs7OfhMsCKz97u1fI7Lcs";
-		var dateAndTime = await d4.modules.getDateAndTime(dateAndTimeUrl);
 
 		var title = "Lokalizator";
 		var text = "Found details are presented below..."
 
 		var save = await d4.modules.saveData(address.toString(), latitude.toString(), longtitude.toString());
 
-		res.render('index', { title: title, text: text, address: address, latitude: latitude, longtitude: longtitude, elevation: elevation, dateAndTime: dateAndTime, sky: sky, temp: temp, pressure: pressure });
+		res.render('index', { title: title, text: text, address: address, latitude: latitude, longtitude: longtitude, elevation: elevation, sky: sky, temp: temp, pressure: pressure });
 	}
 });
 
