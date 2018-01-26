@@ -84,6 +84,7 @@ var methods =
 	
 			console.log("Weather: " + sky + " temp: " + temperature + " pressure: " + pressure);
 
+			var weather = sky + ";" + temperature + ";" + pressure;
 			return weather;
 		}
 		catch(error)
