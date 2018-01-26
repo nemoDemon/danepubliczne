@@ -47,10 +47,7 @@ var methods =
 			var sky = weatherJson.weather[0].main;
 			var temperature = weatherJson.main.temp;
 			var pressure = weatherJson.main.pressure;
-			console.log(sky);
-			console.log(temperature);
-			console.log(pressure);
-			var returnStr = address + ";" + latitude + ";" + longtitude;
+			var returnStr = address + ";" + latitude + ";" + longtitude + ";" + sky + ";" + temperature + ";" + pressure;
 			return returnStr;
 		}
 		catch(error)

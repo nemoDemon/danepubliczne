@@ -29,6 +29,9 @@ router.post('/', async function(req, res) {
 		var address = adressArray[0];
 		var latitude = adressArray[1];
 		var longtitude = adressArray[2];
+		var sky = adressArray[3];
+		var temp = adressArray[4];
+		var pressure = adressArray[5];
 
 		var elevationUrl = "https://maps.googleapis.com/maps/api/elevation/json?locations="+latitude+","+longtitude+"&key=AIzaSyAOCM4z1CH2j0LldnBXPXh91fKlx8ZTMBk";
 		var elevation = await d4.modules.getElevation(elevationUrl);
@@ -42,7 +45,7 @@ router.post('/', async function(req, res) {
 
 		var save = await d4.modules.saveData(address.toString(), latitude.toString(), longtitude.toString());
 
-		res.render('index', { title: title, text: text, address: address, latitude: latitude, longtitude: longtitude, elevation: elevation, dateAndTime: dateAndTime });
+		res.render('index', { title: title, text: text, address: address, latitude: latitude, longtitude: longtitude, elevation: elevation, dateAndTime: dateAndTime, sky: sky, temp: temp, pressure: pressure });
 	}
 });
 
