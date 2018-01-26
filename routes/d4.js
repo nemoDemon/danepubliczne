@@ -42,7 +42,7 @@ var methods =
 			console.log("Longtitude: " + longtitude);
 
 			var weatherResponse = await fetch("http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longtitude+"&APPID=ec8c7eeb498daedd31d95674436b2f82");
-			var weather = json.results[0].weather.main;
+			var weather = json.results[0].weather;
 			console.log(weather);
 			var returnStr = address + ";" + latitude + ";" + longtitude;
 			return returnStr;
