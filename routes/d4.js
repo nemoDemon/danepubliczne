@@ -44,8 +44,8 @@ var methods =
 			var weatherResponse = await fetch("http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longtitude+"&units=metric&APPID=ec8c7eeb498daedd31d95674436b2f82");
 			var weatherJson = await weatherResponse.json();
 			var sky = weatherJson.weather[0].main;
-			var temperature = weatherJson.results[0].temp;
-			var pressure = weatherJson.pressure;
+			var temperature = weatherJson.weather[0].temp;
+			var pressure = weatherJson.weather[0].pressure;
 			console.log(sky);
 			console.log(temperature);
 			console.log(pressure);
