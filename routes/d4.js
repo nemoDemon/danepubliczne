@@ -77,7 +77,7 @@ var methods =
 		{
 			var weatherResponse = await fetch(weatherUrl);
 			var weatherJson = await weatherResponse.json();
-			console.log(weatherJson);
+			
 			var sky = weatherJson.weather[0].main;
 			var temperature = weatherJson.main.temp;
 			var pressure = weatherJson.main.pressure;
