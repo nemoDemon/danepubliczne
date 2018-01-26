@@ -75,7 +75,6 @@ var methods =
 	{
 		try
 		{
-			
 			var weatherResponse = await fetch(weatherUrl);
 			var weatherJson = await weatherResponse.json();
 			console.log(weatherJson);
