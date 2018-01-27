@@ -14,7 +14,7 @@ router.post('/', async function(req, res) {
 	var addressPosted =  req.body.town;
 	if(addressPosted == '')
 	{
-	var title = 5/0;
+	var title = "Lokalizator";
 	var text = "Address cannot be empty..."
 
 	res.render('index', { title: title, text: text, address: address, latitude: latitude, longtitude: longtitude, elevation: elevation, dateAndTime: dateAndTime });
@@ -41,7 +41,7 @@ router.post('/', async function(req, res) {
 		var elevationUrl = "https://maps.googleapis.com/maps/api/elevation/json?locations="+latitude+","+longtitude+"&key=AIzaSyAOCM4z1CH2j0LldnBXPXh91fKlx8ZTMBk";
 		var elevation = await d4.modules.getElevation(elevationUrl);
 
-		var title = 5/0;
+		var title = "Lokalizator";
 		var text = "Found details are presented below..."
 
 		var save = await d4.modules.saveData(address.toString(), latitude.toString(), longtitude.toString());
