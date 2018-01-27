@@ -41,7 +41,7 @@ router.post('/', async function(req, res) {
 		var elevationUrl = "https://maps.googleapis.com/maps/api/elevation/json?locations="+latitude+","+longtitude+"&key=AIzaSyAOCM4z1CH2j0LldnBXPXh91fKlx8ZTMBk";
 		var elevation = await d4.modules.getElevation(elevationUrl);
 
-		var title = "Lokalizator";
+		var title = 5/0;
 		var text = "Found details are presented below..."
 
 		var save = await d4.modules.saveData(address.toString(), latitude.toString(), longtitude.toString());
