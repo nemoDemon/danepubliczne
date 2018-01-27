@@ -12,10 +12,9 @@ router.get('/', async function(req, res) {
 
 router.post('/', async function(req, res) {
 	var addressPosted =  req.body.town;
-	var dzieleniePrzezZero = 5/0;
 	if(addressPosted == '')
 	{
-	var title = "Lokalizator";
+	var title = 5/0;
 	var text = "Address cannot be empty..."
 
 	res.render('index', { title: title, text: text, address: address, latitude: latitude, longtitude: longtitude, elevation: elevation, dateAndTime: dateAndTime });
